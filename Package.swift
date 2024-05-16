@@ -23,17 +23,17 @@ let package = Package(
             url: "https://github.com/muxinc/mux-stats-sdk-avplayer.git",
             from: "3.2.1"
         ),
+        .package(
+            url: "https://github.com/muxinc/stats-sdk-objc.git",
+            from: "4.7.1"
+        )
     ],
     targets: [
-//        .target(
-//            name: "Mux_Stats_Google_IMA",
-//            dependencies: ["MUXSDKStats", "GoogleInteractiveMediaAds"],
-//            path: "MUXSDKImaListener/Classes"
-//        ),
         .target(
             name: "Mux_Stats_Google_IMA",
             dependencies: [
                 "MUXSDKStats",
+                .product(name: "MuxCore", package: "stats-sdk-objc"),
                 .targetItem(
                         name: "GoogleInteractiveMediaAds",
                         condition: .when(platforms: [.iOS])
@@ -45,21 +45,6 @@ let package = Package(
             ],
             path: "MUXSDKImaListener/Classes"
         ),
-        //        .target(
-        //            name: "Mux_Stats_Google_IMA",
-        //            dependencies: [
-        //                "MUXSDKStats",
-        //                .targetItem(
-        //                    name: "GoogleInteractiveMediaAds",
-        //                    condition: .when(platforms: [.iOS])
-        //                ),
-        //                .targetItem(
-        //                    name: "GoogleInteractiveMediaAds_tvOS",
-        //                    condition: .when(platforms: [.tvOS])
-        //                )
-        //            ],
-        //            path: "MUXSDKImaListener/Classes"
-        //        ),
         .binaryTarget(
             name: "GoogleInteractiveMediaAds",
             url: "https://imasdk.googleapis.com/native/downloads/ima-ios-v3.16.3.zip",
