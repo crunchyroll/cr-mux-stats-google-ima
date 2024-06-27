@@ -4,8 +4,7 @@ import PackageDescription
 let package = Package(
     name: "Mux_Stats_Google_IMA",
     platforms: [
-        //.iOS(.v12),
-        .tvOS(.v12)
+		.tvOS(.v12)
     ],
     products: [
         .library(
@@ -34,10 +33,10 @@ let package = Package(
             dependencies: [
                 "MUXSDKStats",
                 .product(name: "MuxCore", package: "stats-sdk-objc"),
-                .targetItem(
-                        name: "GoogleInteractiveMediaAds",
-                        condition: .when(platforms: [.iOS])
-                    ),
+                // .targetItem(
+//                         name: "GoogleInteractiveMediaAds",
+//                         condition: .when(platforms: [.iOS])
+//                     ),
                 .targetItem(
                     name: "GoogleInteractiveMediaAds_tvOS",
                     condition: .when(platforms: [.tvOS])
@@ -45,11 +44,11 @@ let package = Package(
             ],
             path: "MUXSDKImaListener/Classes"
         ),
-        .binaryTarget(
-            name: "GoogleInteractiveMediaAds",
-            url: "https://imasdk.googleapis.com/native/downloads/ima-ios-v3.16.3.zip",
-            checksum: "049bac92551b50247ea14dcbfde9aeb99ac2bea578a74f67c6f3e781d9aca101"
-        ),
+        // .binaryTarget(
+//             name: "GoogleInteractiveMediaAds",
+//             url: "https://imasdk.googleapis.com/native/downloads/ima-ios-v3.16.3.zip",
+//             checksum: "049bac92551b50247ea14dcbfde9aeb99ac2bea578a74f67c6f3e781d9aca101"
+//         ),
         .binaryTarget(
             name: "GoogleInteractiveMediaAds_tvOS",
             url: "https://imasdk.googleapis.com/native/downloads/ima-tvos-v4.9.2.zip",
